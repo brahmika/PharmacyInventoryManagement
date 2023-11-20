@@ -1,0 +1,12 @@
+// Establishing a connection between the medicine entry page and database
+            Con = DriverManager.getConnection("jdbc:derby://localhost:1527/medicinedb");
+            PreparedStatement add = (PreparedStatement) Con.prepareStatement("insert into MEDICINETBL values(?,?,?,?,?,?)");
+            add.setInt(1, Integer.parseInt(MedId.getText()));
+            add.setString(2, MedName.getText());
+            add.setInt(3, Integer.parseInt(MedPrice.getText()));
+            add.setInt(4, Integer.parseInt(MedQty.getText()));
+            add.setDate(5, MyFabDate);
+            add.setDate(6, MyExpDate);
+            int row = add.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Medicine Successfully Added");
+            Con.close();
